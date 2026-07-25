@@ -3,90 +3,83 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوبر ماركت ابو الحاج</title>
+
+    <title> سوبر ماركت ابو الحاج</title>
+
     <link rel="icon" href="favicon.ico">
+
     <!-- Google Font -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <!-- CSS -->
+
     <link rel="stylesheet" href="assets/css/style.css">
+
     <style>
-        /* الوضع المظلم الاحترافي والمريح للعين */
-        body.dark-mode {
-            background-color: #121212 !important;
-            color: #e0e0e0 !important;
-        }
-        body.dark-mode header.header {
-            background-color: #1b5e20 !important; /* لون أخضر داكن مريح في الدارك مود للهيدر */
-        }
-        body.dark-mode .card {
-            background-color: #1e1e1e !important;
-            color: #ffffff !important;
-            border-color: #2c2c2c !important;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .product-name, 
-        body.dark-mode h2, 
-        body.dark-mode h3 {
-            color: #ffffff !important;
-        }
-        body.dark-mode .search-box input {
-            background-color: #2a2a2a !important;
-            color: #ffffff !important;
-            border-color: #444 !important;
-        }
-        body.dark-mode .search-box input::placeholder {
-            color: #aaa !important;
-        }
-        body.dark-mode .category {
-            background-color: #1e1e1e !important;
-            color: #e0e0e0 !important;
-            border: 1px solid #333 !important;
-        }
-        body.dark-mode .category.active {
-            background-color: #2e7d32 !important;
-            color: #fff !important;
-        }
-        body.dark-mode .modal-content {
-            background-color: #1e1e1e !important;
-            color: #fff !important;
-        }
-        body.dark-mode footer {
-            background-color: #181818 !important;
-            color: #ccc !important;
-        }
+        /* الأصفار والوضع المظلم */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+    body.dark-mode header, 
+    body.dark-mode footer, 
+    body.dark-mode .card, 
+    body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #333;
+}
     </style>
+
 </head>
 
 <body>
 
     <!-- Header -->
+
     <header class="header">
-        <div class="container" style="position: relative;">
-            <!-- زرار الدارك مود في زاوية الهيدر عشان ميأثرش على الترتيب -->
-            <button id="darkModeToggle" class="dark-mode-btn" aria-label="تبديل الوضع المظلم" style="position: absolute; top: 0; left: 0; background: rgba(255,255,255,0.2); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: white; font-size: 18px; display: flex; align-items: center; justify-content: center;">
-                <i class="fa-solid fa-moon"></i>
-            </button>
+
+        <div class="container">
 
             <div class="logo">
+            <button id="darkModeToggle" class="dark-mode-btn" aria-label="تبديل الوضع المظلم">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+                
                 <div>
-                    <h1>سوبر ماركت ابو الحاج
+                    <h1>  سوبر ماركت ابو الحاج
                         <i class="fa-solid fa-cart-shopping"></i>
                     </h1>
-                    <p>اعرف أسعار المنتجات</p>
+
+                    <p>اعرف أسعار المنتجات </p>
+
                 </div>
+
             </div>
 
             <div class="store-info">
+
                 <div>
                     <i class="fa-solid fa-location-dot"></i>
-                    <a href="https://maps.app.goo.gl/vMKAPqTGc8tNou7n7" target="_blank" class="location-link">
-                         سوبر ماركت ابو الحاج                                
+                    <a
+                        href="https://maps.app.goo.gl/vMKAPqTGc8tNou7n7"
+                        target="_blank"
+                        class="location-link">
+                         سوبر ماركت ابو الحاج                        
                     </a>
                 </div>
 
@@ -96,101 +89,189 @@
                 </div>
 
                 <div>
+
                     <i class="fa-solid fa-clock"></i>
+
                     <span>8 صباحًا - 2 بالليل</span>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
     <!-- Search -->
+
     <section class="search-section">
+
         <div class="container">
+
             <div class="search-box">
+
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search" placeholder="ابحث عن أي منتج...">
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="ابحث عن أي منتج...">
+
             </div>
+
         </div>
+
     </section>
 
     <!-- Categories -->
+
     <section class="categories-section">
+
         <div class="container">
-            <div class="categories" id="categories"></div>
+
+            <div
+                class="categories"
+                id="categories">
+
+            </div>
+
         </div>
+
     </section>
 
     <!-- Products -->
+
     <main class="products-section">
+
         <div class="container">
+
             <div class="section-header">
+
                 <h2>
+
                     <i class="fa-solid fa-store"></i>
+
                     المنتجات
+
                 </h2>
+
             </div>
-            <div class="product-grid" id="product-grid"></div>
+
+            <div
+                class="product-grid"
+                id="product-grid">
+
+            </div>
+
         </div>
+
     </main>
 
+
     <!-- Product Modal -->
-    <div class="modal" id="productModal">
+    <div
+        class="modal"
+        id="productModal">
+
         <div class="modal-content">
-            <button class="close-modal">
+
+            <button
+                class="close-modal">
+
                 <i class="fa-solid fa-xmark"></i>
+
             </button>
-            <img id="modal-image" src="" alt="">
+
+            <img
+                id="modal-image"
+                src=""
+                alt="">
+
             <h2 id="modal-name"></h2>
+
             <p id="modal-price"></p>
+
             <p id="modal-category"></p>
+
             <span id="modal-status"></span>
 
-            <!-- زرار طلب الواتساب -->
+            <!-- أضفنا زرار طلب الواتساب هنا -->
             <div style="margin-top: 20px;">
                 <a id="modal-whatsapp-btn" href="#" target="_blank" class="whatsapp-order-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #25d366; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; width: 100%;">
                     <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> طلب عبر واتساب
                 </a>
             </div>
+
         </div>
+
     </div>
 
-    <!-- Back To Top & WhatsApp Floating -->
-    <a href="https://wa.me/201152656520" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- Back To Top -->
 
-    <button id="backToTop">
-        <dir class="fa-solid fa-arrow-up"></dir>
+<a
+    href="https://wa.me/201152656520"
+    class="whatsapp-btn"
+    target="_blank"
+    aria-label="WhatsApp">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+    <button
+        id="backToTop">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
     </button>
 
     <!-- Footer -->
+
     <footer>
+
         <div class="container">
+
             <h2>
+
                 <i class="fa-solid fa-cart-shopping"></i>
-                سوبر ماركت ابو الحاج
-                <i class="fa-solid fa-cart-shopping"></i>
+
+               سوبر ماركت ابو الحاج
+               
+               <i class="fa-solid fa-cart-shopping"></i>
+
             </h2>
 
             <div class="footer-links">
-                <a href="tel:+201152656520">
-                    <i class="fa-solid fa-phone"></i> اتصال
-                </a>
-                <a href="https://wa.me/201152656520" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> واتساب
-                </a>
-                <a href="https://maps.app.goo.gl/vMKAPqTGc8tNou7n7" target="_blank">
-                    <i class="fa-solid fa-location-dot"></i> اعرف طريق الوصول
-                </a>
+
+            <a href="tel:+201152656520">
+            <i class="fa-solid fa-phone"></i>
+                     اتصال
+            </a>
+
+            <a href="https://wa.me/201152656520" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+                واتساب
+            </a>
+
+            <a href="https://maps.app.goo.gl/vMKAPqTGc8tNou7n7" target="_blank">
+            <i class="fa-solid fa-location-dot"></i>
+                اعرف طريق الوصول
+            </a>
+
             </div>
 
             <p class="copyright">
+
                 © 2026 جميع الحقوق محفوظة
+
             </p>
+
         </div>
+
     </footer>
 
-    <script type="module" src="assets/js/script.js"></script>
+        <script type="module" src="assets/js/script.js"></script>
+
 </body>
 
 </html>
