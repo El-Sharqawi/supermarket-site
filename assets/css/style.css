@@ -72,7 +72,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     margin-top: 25px;
     flex-wrap: wrap;
 }
@@ -569,7 +569,7 @@ body.dark-mode footer {
    Responsive Design & Mobile Layout Fixes
 =========================== */
 @media (max-width: 768px){
-    /* تعديل زر الدارك مود خصيصاً للموبايل ليكون بجانب العنوان والسلة */
+    /* زر الدارك مود */
     #darkModeToggle {
         top: 10px;
         right: 12px;
@@ -579,57 +579,61 @@ body.dark-mode footer {
     }
 
     .header{
-        padding:25px 15px;
-        border-radius:0 0 20px 20px;
-        margin-top:0;
+        padding: 22px 12px;
+        border-radius: 0 0 20px 20px;
+        margin-top: 0;
     }
     
     .logo h1{
-        font-size:20px; /* تصغير حجم اسم المتجر قليلاً في الهيدر ليتسع بجانب أيقونة الدارك مود والسلة */
+        font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
-        flex-wrap: nowrap;
-    }
-
-    .logo h1 i {
-        font-size: 20px;
     }
 
     .logo p{
-        font-size:14px;
+        font-size: 13px;
+        margin-top: 5px;
     }
 
-    /* ضبط عنوان الفوتر ليظهر على سطر واحد وبحجم مناسب للشاشة */
-    footer h2 {
-        font-size: 18px !important;
-        white-space: nowrap !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: 100%;
-        max-width: 100%;
-        padding: 0 10px;
+    /* ضبط تباعد معلومات المتجر لتكون تحت بعض بمسافات متناسقة وليست متباعدة جداً */
+    .store-info {
+        margin-top: 12px;
+        flex-direction: column;
+        gap: 6px; /* مسافة صغيرة ومناسبة بين العنوان ورقم الهاتف والمواعيد */
+        align-items: center;
     }
 
-    .store-info{
-        margin-top:15px;
-        flex-direction:column;
-        gap:8px;
-        align-items:center;
-        font-size: 14px;
+    .store-info div {
+        font-size: 13px;
+        gap: 6px;
     }
 
+    /* إصلاح اتجاه وعرض الأقسام (Categories) لكي لا يختفي زر الكل على اليمين وتظهر مصفوفة بشكل صحيح */
     .categories {
-        padding: 10px;
+        display: flex;
+        justify-content: flex-start; /* يبدأ من اليمين لليمين بشكل صحيح بالعربي */
+        align-items: center;
+        overflow-x: auto;
+        padding: 10px 15px;
         gap: 8px;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+
+    .categories::-webkit-scrollbar {
+        display: none; /* إخفاء شريط التمرير لشكل أطهر وأنظف */
     }
 
     .category {
-        padding: 8px 16px;
-        font-size: 13px;
+        flex: 0 0 auto; /* يمنع انكماش الأزرار ويحافظ على ظهورها كاملة */
+        padding: 6px 14px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
+    /* شبكة المنتجات */
     .product-grid{
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px;
@@ -664,6 +668,17 @@ body.dark-mode footer {
     .available {
         font-size: 11px !important;
         padding: 3px 8px;
+    }
+
+    /* الفوتر */
+    footer h2 {
+        font-size: 18px !important;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     .modal-content{
