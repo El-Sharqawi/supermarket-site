@@ -44,10 +44,26 @@ function displayProducts(products){
     }
 
     products.forEach(product=>{
-        const card=document.createElement("div");
-        card.className="card";
-        card.innerHTML=`
-            <img src="${product.image}">
+    const card=document.createElement("div");
+    card.className="card";
+
+    // التصحيح التلقائي لمسار الصورة لو كان قديم ومحلي
+    let imgPath = product.image;
+    if (imgPath && imgPath.includes("assets/images/")) {
+        // لو مسار نسبي تمام، بس بنأكد إنه يبدأ بشكل صح
+        imgPath = imgPath.substring(imgPath.indexOf("assets/images/"));
+    } else if (imgPath && imgPath.includes("images/")) {
+        imgPath = imgPath.substring(imgPath.indexOf("images/"));
+    } else if (imgPath && imgPath.includes("D:/")) {
+        // لو المسار قديم وجاي من الهارد، نطلّع اسم الصورة ونحطها في مجلد الصور الجديد
+        const parts = imgPath.split("/");
+        const fileName = parts[parts.length - 1];
+        imgPath = "assets/images/" + fileName;
+    }
+
+    card.innerHTML=`
+        <img src="${imgPath}">
+
            <div class="card-body">
             <h3 class="product-name">
                 ${product.productName}
@@ -66,7 +82,7 @@ function displayProducts(products){
 
         card.addEventListener("click",()=>{
             modal.classList.add("show");
-            modalImage.src = product.image;
+            modalImage.src = imgPath;
             modalName.textContent = product.productName;
             modalPrice.textContent = product.price + " جنيه";
             modalCategory.textContent = "القسم : " + product.category;
