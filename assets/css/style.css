@@ -436,50 +436,57 @@ footer p{
    Footer Links & Hover Effects
 =========================== */
 .footer-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin:35px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 35px 0;
 }
 
 .footer-links a{
-    min-width:180px;
-    height:55px;
-    padding:0 20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    border-radius:16px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    color:#fff;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:700;
-    transition: all 0.35s ease; /* أنيماشن ناعم وسلس لكل الخصائص */
+    min-width: 180px;
+    height: 55px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.35s ease;
 }
 
-/* زر الاتصال - لون هادئ عند الوقوف بالماوس */
-.footer-links a:nth-child(3):hover {
-    background: rgba(220, 53, 69, 0.25);
-    border-color: rgba(220, 53, 69, 0.5);
-    transform: translateY(-5px);
-}
-
-/* زر واتساب - لون أخضر هادئ عند الوقوف بالماوس */
-.footer-links a:nth-child(2):hover {
-    background: rgba(37, 211, 102, 0.25);
-    border-color: rgba(37, 211, 102, 0.5);
-    transform: translateY(-5px);
-}
-
-/* زر الموقع - لون أزرق هادئ عند الوقوف بالماوس */
+/* زر الموقع (الأول) - لون أزرق زاهي وقوي */
 .footer-links a:nth-child(1):hover {
-    background: rgba(13, 110, 253, 0.25);
-    border-color: rgba(13, 110, 253, 0.5);
+    background: #0066ff;
+    border-color: #3385ff;
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.6);
+    transform: translateY(-5px);
+}
+
+/* زر واتساب (الثاني) - لون أخضر زاهي وصارخ */
+.footer-links a:nth-child(2):hover {
+    background: #00cc44;
+    border-color: #33ff66;
+    box-shadow: 0 0 15px rgba(0, 204, 68, 0.6);
+    transform: translateY(-5px);
+}
+
+/* زر الاتصال (الثالث) - لون أحمر قوي زي دم الغزال */
+.footer-links a:nth-child(3):hover {
+    background: #e60026;
+    border-color: #ff3352;
+    box-shadow: 0 0 15px rgba(230, 0, 38, 0.6);
+    transform: translateY(-5px);
+}
+
+.footer-links a:hover{
     transform: translateY(-5px);
 }
 
