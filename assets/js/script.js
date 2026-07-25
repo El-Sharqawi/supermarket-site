@@ -63,29 +63,29 @@ function displayProducts(products){
                 </span>
             </div>
         `;
+        
+        card.addEventListener("click", () => {
+            modal.classList.add("show");
+            modalImage.src = product.image || "";
+            modalName.textContent = product.productName || "";
+            modalPrice.textContent = (product.price || 0) + " جنيه";
+            modalCategory.textContent = "القسم : " + (product.category || "");
+            modalStatus.textContent = product.available ? "متوفر" : "غير متوفر";
+            modalStatus.style.background = product.available ? "#2E7D32" : "#d32f2f";
+
+            if(modalWhatsappBtn) {
+                if (product.available) {
+                    modalWhatsappBtn.style.display = "flex";
+                    const whatsappMessage = encodeURIComponent(`مرحباً، أريد طلب هذا المنتج:\n- الاسم: ${product.productName}\n- السعر: ${product.price} جنيه`);
+                    modalWhatsappBtn.href = `https://wa.me/201152656520?text=${whatsappMessage}`;
+                } else {
+                    modalWhatsappBtn.style.display = "none";
+                }
+            }
+        });
+
         productGrid.appendChild(card);
-
-card.addEventListener("click", () => {
-    modal.classList.add("show");
-    modalImage.src = product.image || "";
-    modalName.textContent = product.productName || "";
-    modalPrice.textContent = (product.price || 0) + " جنيه";
-    modalCategory.textContent = "القسم : " + (product.category || "");
-    modalStatus.textContent = product.available ? "متوفر" : "غير متوفر";
-    modalStatus.style.background = product.available ? "#2E7D32" : "#d32f2f";
-
-    // أضف هذا الشرط هنا للتحكم في ظهور زر الواتساب
-    const modalWhatsappBtn = document.querySelector(".whatsapp-order-btn"); // تأكد من اختيار زر الواتساب داخل المودال
-    if (modalWhatsappBtn) {
-        if (product.available) {
-            modalWhatsappBtn.style.display = "flex"; // أو "inline-block" حسب التصميم
-            const whatsappMessage = encodeURIComponent(`مرحباً، أريد طلب هذا المنتج:\n- الاسم: ${product.productName}\n- السعر: ${product.price} جنيه`);
-            modalWhatsappBtn.href = `https://wa.me/201152656520?text=${whatsappMessage}`;
-        } else {
-            modalWhatsappBtn.style.display = "none"; // إخفاء الزر تماماً إذا لم يكن متوفراً
-        }
-    }
-});
+    });
 }
 
 function createCategories(products){
