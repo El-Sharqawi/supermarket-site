@@ -44,27 +44,29 @@ function displayProducts(products){
     }
 
     products.forEach(product=>{
-    const card=document.createElement("div");
-    card.className="card";
+        const card=document.createElement("div");
+        card.className="card";
 
-    // التصحيح التلقائي لمسار الصورة لو كان قديم ومحلي
-    let imgPath = product.image;
-    if (imgPath && imgPath.includes("assets/images/")) {
-        // لو مسار نسبي تمام، بس بنأكد إنه يبدأ بشكل صح
-        imgPath = imgPath.substring(imgPath.indexOf("assets/images/"));
-    } else if (imgPath && imgPath.includes("images/")) {
-        imgPath = imgPath.substring(imgPath.indexOf("images/"));
-    } else if (imgPath && imgPath.includes("D:/")) {
-        // لو المسار قديم وجاي من الهارد، نطلّع اسم الصورة ونحطها في مجلد الصور الجديد
-        const parts = imgPath.split("/");
-        const fileName = parts[parts.length - 1];
-        imgPath = "assets/images/" + fileName;
-    }
+        // الحل السحري لتعديل المسار أوتوماتيك لأي صورة قديمة أو محلية
+        let imgPath = product.image;
+        if (imgPath) {
+            // لو المسار فيه الهارد القديم D:/ أو file:///، نطلع اسم الملف الأخير بس
+            if (imgPath.includes("D:/") || imgPath.includes("file:///")) {
+                const parts = imgPath.split("/");
+                const fileName = parts[parts.length - 1];
+                imgPath = "assets/images/" + fileName;
+            } 
+            // لو المسار مش بيبدأ بـ http (يعني مش رابط خارجي) ومش بـ assets، نظبطه
+            else if (!imgPath.startsWith("http") && !imgPath.startsWith("assets/")) {
+                const parts = imgPath.split("/");
+                const fileName = parts[parts.length - 1];
+                imgPath = "assets/images/" + fileName;
+            }
+        }
 
-    card.innerHTML=`
-        <img src="${imgPath}">
-
-           <div class="card-body">
+        card.innerHTML=`
+            <img src="${imgPath}" alt="${product.productName}">
+            <div class="card-body">
             <h3 class="product-name">
                 ${product.productName}
             </h3>
@@ -82,21 +84,19 @@ function displayProducts(products){
 
         card.addEventListener("click",()=>{
             modal.classList.add("show");
-            modalImage.src = imgPath;
+            modalImage.src = imgPath; // استخدام نفس المسار المعدل للـ Modal
             modalName.textContent = product.productName;
             modalPrice.textContent = product.price + " جنيه";
             modalCategory.textContent = "القسم : " + product.category;
             modalStatus.textContent = product.available ? "متوفر" : "غير متوفر";
             modalStatus.style.background = product.available ? "#2E7D32" : "#d32f2f";
 
-            // تجهيز رابط الواتساب بالاسم والسعر عند الضغط على المنتج
             const whatsappMessage = encodeURIComponent(`مرحباً، أريد طلب هذا المنتج:\n- الاسم: ${product.productName}\n- السعر: ${product.price} جنيه`);
             if(modalWhatsappBtn) {
                 modalWhatsappBtn.href = `https://wa.me/201152656520?text=${whatsappMessage}`;
             }
         });
     });
-}
 
 function createCategories(products){
     const categories = [...new Set(products.map(product => product.category))];
