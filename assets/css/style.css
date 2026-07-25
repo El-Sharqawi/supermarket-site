@@ -420,14 +420,10 @@ footer{
     text-align:center;
 }
 
-footer h2 {
-    font-size: 18px !important;
-    white-space: nowrap !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 10px;
+footer h2{
+    font-size:32px;
+    margin-bottom:15px;
+    color:#fff;
 }
 
 footer p{
@@ -554,6 +550,15 @@ body.dark-mode footer {
    Responsive Design & Mobile Layout Fixes
 =========================== */
 @media (max-width: 768px){
+    /* تعديل زر الدارك مود خصيصاً للموبايل ليكون بجانب العنوان والسلة */
+    #darkModeToggle {
+        top: 10px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+
     .header{
         padding:25px 15px;
         border-radius:0 0 20px 20px;
@@ -561,11 +566,31 @@ body.dark-mode footer {
     }
     
     .logo h1{
-        font-size:24px;
+        font-size:20px; /* تصغير حجم اسم المتجر قليلاً في الهيدر ليتسع بجانب أيقونة الدارك مود والسلة */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .logo h1 i {
+        font-size: 20px;
     }
 
     .logo p{
         font-size:14px;
+    }
+
+    /* ضبط عنوان الفوتر ليظهر على سطر واحد وبحجم مناسب للشاشة */
+    footer h2 {
+        font-size: 18px !important;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     .store-info{
@@ -576,7 +601,6 @@ body.dark-mode footer {
         font-size: 14px;
     }
 
-    /* تصغير خط وحجم أزرار الأقسام على الموبايل */
     .categories {
         padding: 10px;
         gap: 8px;
@@ -587,7 +611,6 @@ body.dark-mode footer {
         font-size: 13px;
     }
 
-    /* عرض منتجين (2 columns) جنب بعض على الموبايل */
     .product-grid{
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px;
