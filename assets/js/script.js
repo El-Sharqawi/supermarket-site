@@ -22,7 +22,7 @@ const modalName = document.getElementById("modal-name");
 const modalPrice = document.getElementById("modal-price");
 const modalCategory = document.getElementById("modal-category");
 const modalStatus = document.getElementById("modal-status");
-const modalWhatsappBtn = document.getElementById("modal-whatsapp-btn"); // تعريف زرار الواتساب
+const modalWhatsappBtn = document.getElementById("modal-whatsapp-btn");
 
 const closeModal = document.querySelector(".close-modal");
 const categoriesContainer = document.getElementById("categories");
@@ -30,12 +30,12 @@ const categoriesContainer = document.getElementById("categories");
 let allProducts = [];
 
 function displayProducts(products){
-    productGrid.innerHTML="";
+    productGrid.innerHTML = "";
 
     if (products.length === 0) {
         productGrid.innerHTML = `
-            <div class="no-results">
-                <i class="fa-solid fa-face-frown"></i>
+            <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                <i class="fa-solid fa-face-frown" style="font-size: 40px; margin-bottom: 10px; color: #888;"></i>
                 <h2>لا يوجد منتج بهذا الاسم</h2>
                 <p>جرّب كلمة بحث أخرى.</p>
             </div>
@@ -43,38 +43,37 @@ function displayProducts(products){
         return;
     }
 
-    products.forEach(product=>{
-        const card=document.createElement("div");
-        card.className="card";
+    products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "card";
         
-        card.innerHTML=`
-            <img src="${product.image}">
-           <div class="card-body">
-            <h3 class="product-name">
-                ${product.productName}
-            </h3>
-            <div class="price-row">
-                <span class="price">
-                     ${product.price} جنيه 💰
+        card.innerHTML = `
+            <img src="${product.image || ''}" alt="${product.productName || ''}">
+            <div class="card-body">
+                <h3 class="product-name">
+                    ${product.productName || ''}
+                </h3>
+                <div class="price-row">
+                    <span class="price">
+                         ${product.price || 0} جنيه 💰
+                    </span>
+                </div>
+                <span class="available ${product.available ? "" : "out"}">
+                    ${product.available ? "🟢 متوفر" : "🔴 غير متوفر"}
                 </span>
-            </div>
-            <span class="available ${product.available ? "" : "out"}">
-                ${product.available ? "🟢 متوفر" : "🔴 غير متوفر"}
-            </span>
             </div>
         `;
         productGrid.appendChild(card);
 
-        card.addEventListener("click",()=>{
+        card.addEventListener("click", () => {
             modal.classList.add("show");
-            modalImage.src = product.image;
-            modalName.textContent = product.productName;
-            modalPrice.textContent = product.price + " جنيه";
-            modalCategory.textContent = "القسم : " + product.category;
+            modalImage.src = product.image || "";
+            modalName.textContent = product.productName || "";
+            modalPrice.textContent = (product.price || 0) + " جنيه";
+            modalCategory.textContent = "القسم : " + (product.category || "");
             modalStatus.textContent = product.available ? "متوفر" : "غير متوفر";
             modalStatus.style.background = product.available ? "#2E7D32" : "#d32f2f";
 
-            // تجهيز رابط الواتساب بالاسم والسعر عند الضغط على المنتج
             const whatsappMessage = encodeURIComponent(`مرحباً، أريد طلب هذا المنتج:\n- الاسم: ${product.productName}\n- السعر: ${product.price} جنيه`);
             if(modalWhatsappBtn) {
                 modalWhatsappBtn.href = `https://wa.me/201152656520?text=${whatsappMessage}`;
@@ -84,7 +83,7 @@ function displayProducts(products){
 }
 
 function createCategories(products){
-    const categories = [...new Set(products.map(product => product.category))];
+    const categories = [...new Set(products.map(product => product.category).filter(Boolean))];
     categoriesContainer.innerHTML = "";
 
     const allButton = document.createElement("button");
@@ -93,7 +92,7 @@ function createCategories(products){
     allButton.dataset.category = "الكل";
     categoriesContainer.appendChild(allButton);
 
-    categories.forEach(category =>{
+    categories.forEach(category => {
         const button = document.createElement("button");
         button.className = "category";
         button.dataset.category = category;
@@ -120,47 +119,47 @@ async function loadProductsFromFirestore() {
 
 loadProductsFromFirestore();
 
-searchInput.addEventListener("input",()=>{
-    const value=searchInput.value.toLowerCase();
-    const filtered = allProducts.filter(product => {
-        return (
-            product.productName.toLowerCase().includes(value) ||
-            product.category.toLowerCase().includes(value) ||
-            product.price.toString().includes(value)
-        );
+if(searchInput) {
+    searchInput.addEventListener("input", () => {
+        const value = searchInput.value.toLowerCase().trim();
+        const filtered = allProducts.filter(product => {
+            return (
+                (product.productName || "").toLowerCase().includes(value) ||
+                (product.category || "").toLowerCase().includes(value) ||
+                (product.price || "").toString().includes(value)
+            );
+        });
+        displayProducts(filtered);
     });
-    displayProducts(filtered);
-});
+}
 
 function addCategoryEvents(){
     const buttons = document.querySelectorAll(".category");
-    buttons.forEach(button=>{
-        button.addEventListener("click",()=>{
-            buttons.forEach(btn=>
-                btn.classList.remove("active")
-            );
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            buttons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
             const category = button.dataset.category;
 
-            if(category==="الكل"){
+            if(category === "الكل"){
                 displayProducts(allProducts);
                 return;
             }
 
-            const filtered = allProducts.filter(product=>
-                product.category===category
-            );
+            const filtered = allProducts.filter(product => product.category === category);
             displayProducts(filtered);
         });
     });
 }
 
-closeModal.addEventListener("click",()=>{
-    modal.classList.remove("show");
-});
+if(closeModal) {
+    closeModal.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+}
 
-window.addEventListener("click",(e)=>{
-    if(e.target===modal){
+window.addEventListener("click", (e) => {
+    if(e.target === modal){
         modal.classList.remove("show");
     }
 });
@@ -175,9 +174,31 @@ window.addEventListener("scroll", () => {
     }
 });
 
-backToTop.addEventListener("click", () => {
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
+if(backToTop) {
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
-});
+}
+
+// تفعيل واسترجاع الوضع المظلم (Dark Mode)
+const darkModeToggle = document.getElementById("darkModeToggle");
+if(darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if(document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            localStorage.setItem("theme", "light");
+            darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+    });
+
+    if(localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+}
