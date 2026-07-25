@@ -110,6 +110,8 @@ async function loadProductsFromFirestore() {
         querySnapshot.forEach((doc) => {
             allProducts.push({ id: doc.id, ...doc.data() });
         });
+        
+        // الحفاظ على ترتيب الإنشاء أو الجلب الأصلي وعدم عكسه أو تغييره عند التعديل
         displayProducts(allProducts);
         createCategories(allProducts);
     } catch (err) {
@@ -183,7 +185,6 @@ if(backToTop) {
     });
 }
 
-// تفعيل واسترجاع الوضع المظلم (Dark Mode)
 const darkModeToggle = document.getElementById("darkModeToggle");
 if(darkModeToggle) {
     darkModeToggle.addEventListener("click", () => {
