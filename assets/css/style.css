@@ -586,41 +586,45 @@ body.dark-mode footer {
     }
 
     .header{
-        padding: 22px 12px;
+        padding: 20px 10px 15px 10px;
         border-radius: 0 0 20px 20px;
         margin-top: 0;
     }
     
     .logo h1{
-        font-size: 20px;
+        font-size: 19px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-    }
-
-    .logo p{
-        font-size: 13px;
-        margin-top: 5px;
-    }
-
-    /* ضبط تباعد معلومات المتجر لتكون تحت بعض بمسافات متناسقة وليست متباعدة جداً */
-    .store-info {
-        margin-top: 12px;
-        flex-direction: column;
-        gap: 6px; /* مسافة صغيرة ومناسبة بين العنوان ورقم الهاتف والمواعيد */
-        align-items: center;
-    }
-
-    .store-info div {
-        font-size: 13px;
         gap: 6px;
     }
 
-    /* إصلاح اتجاه وعرض الأقسام (Categories) لكي لا يختفي زر الكل على اليمين وتظهر مصفوفة بشكل صحيح */
+    .logo p{
+        font-size: 12px;
+        margin-top: 3px;
+        margin-bottom: 0px;
+    }
+
+    /* ضبط المسافات تحت العنوان لتكون متراصة وبدون مسافات واسعة وبشكل مرتب */
+    .store-info {
+        margin-top: 8px !important;
+        flex-direction: column !important;
+        gap: 3px !important; /* مسافة ضيقة وممتازة بين العناصر */
+        align-items: center !important;
+    }
+
+    .store-info div {
+        font-size: 12px !important;
+        gap: 5px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.4;
+    }
+
+    /* بقية أكواد الموبايل كما هي لضمان عدم حدوث أي تغييرات جانبية */
     .categories {
         display: flex;
-        justify-content: flex-start; /* يبدأ من اليمين لليمين بشكل صحيح بالعربي */
+        justify-content: flex-start;
         align-items: center;
         overflow-x: auto;
         padding: 10px 15px;
@@ -630,17 +634,16 @@ body.dark-mode footer {
     }
 
     .categories::-webkit-scrollbar {
-        display: none; /* إخفاء شريط التمرير لشكل أطهر وأنظف */
+        display: none;
     }
 
     .category {
-        flex: 0 0 auto; /* يمنع انكماش الأزرار ويحافظ على ظهورها كاملة */
+        flex: 0 0 auto;
         padding: 6px 14px;
         font-size: 12px;
         white-space: nowrap;
     }
 
-    /* شبكة المنتجات */
     .product-grid{
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px;
@@ -677,7 +680,6 @@ body.dark-mode footer {
         padding: 3px 8px;
     }
 
-    /* الفوتر */
     footer h2 {
         font-size: 18px !important;
         white-space: nowrap !important;
