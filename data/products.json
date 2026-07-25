@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "بيبسي",
+        "price": 15,
+        "image": "assets/images/مشروبات/بيبسي كانز.png",
+        "available": true,
+        "category": "مشروبات"
+    },
+    {
+        "id": 2,
+        "name": "سفن أب",
+        "price": 15,
+        "image": "assets/images/مشروبات/سفن أب كانز.png",
+        "available": true,
+        "category": "مشروبات"
+    },
+    {
+        "id": 2,
+        "name": "سفن أب",
+        "price": 15,
+        "image": "assets/images/مشروبات/فيروز كانز.png",
+        "available": true,
+        "category": "مشروبات"
+    }
+]
