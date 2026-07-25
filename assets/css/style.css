@@ -489,7 +489,7 @@ body.dark-mode .search-box input {
 }
 
 body.dark-mode .search-box input::placeholder {
-    color: #888 !important;
+    color: #aaa !important;
 }
 
 body.dark-mode .category {
@@ -511,7 +511,7 @@ body.dark-mode .card {
     background-color: #1e1e1e !important;
     color: #ffffff !important;
     box-shadow: 0 8px 25px rgba(0,0,0,.4);
-    border: 1px solid #2a2a2a;
+    border: 1px solid #333 !important;
 }
 
 body.dark-mode .card img {
@@ -530,6 +530,7 @@ body.dark-mode .modal-content {
     background-color: #1e1e1e !important;
     color: #fff !important;
     box-shadow: 0 15px 40px rgba(0,0,0,.7);
+    border: 1px solid #333 !important;
 }
 
 body.dark-mode #modal-name {
@@ -537,7 +538,7 @@ body.dark-mode #modal-name {
 }
 
 body.dark-mode #modal-category {
-    color: #aaa !important;
+    color: #ccc !important;
 }
 
 body.dark-mode footer {
